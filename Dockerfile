@@ -1,6 +1,6 @@
 # Used for prod build.
 FROM php:8.3-fpm as php
-FROM nginx
+#FROM nginx
 
 # Set environment variables
 ENV PHP_OPCACHE_ENABLE=1
@@ -18,10 +18,10 @@ RUN docker-php-ext-install mysqli pdo pdo_mysql bcmath curl opcache mbstring
 COPY --from=composer:2.3.5 /usr/bin/composer /usr/bin/composer
 
 # Copy nginx files
-COPY static-html-directory /usr/share/nginx/html
+#COPY static-html-directory /usr/share/nginx/html
 
 # Install Nginx
-RUN docker --name sistemarma -d some-content-nginx
+#RUN docker --name sistemarma -d some-content-nginx
 
 # Copy configuration files.
 COPY ./docker/php/php.ini /usr/local/etc/php/php.ini
