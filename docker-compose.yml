@@ -1,17 +1,11 @@
 version: "3.8"
-services:
-    api:
-        container_name: api
-        build:
-            context: .
-            target: php
-            args:
-                - APP_ENV=${APP_ENV}
-        environment:
-            - APP_ENV=${APP_ENV}
-        working_dir: /app
-        volumes:
-            - ./:/app
-        ports:
-            - 8080:8080
+web:
+    image: nginx
+    volumes: 
+        - ./templates:/etc/nginx/templates
+    ports:
+    - "8080:80"
+    environment:
+    - NGINX_HOST=rma.com
+    - NGINX_PORT=80
 
